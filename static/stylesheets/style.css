@@ -1,0 +1,64 @@
+*{
+	font-family: sans-serif;
+}
+
+.wrapper{
+	width: 800px;
+	margin: 0 auto;
+}
+
+textarea{
+	display: block;
+}
+
+.form-group{
+	margin-bottom: 20px;
+}
+
+span{
+	margin-left: 40px;
+	font-weight: normal;
+	font-size: 0.8em;
+}
+
+.post-comment-container{
+	border: 1px solid;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+
+p{
+	font-size: 1.2em;
+}
+
+p.comment{
+	font-size: 0.9em
+}
+
+hr{
+	width: 85%;
+
+}
+
+.comment-container{
+	margin-left: 30px;
+	border: 1px solid;
+	padding: 10px;
+	background-color: #eee;
+}
+
+.comment-message-container{
+	border-bottom: 2px solid;
+}
+
+.comment-form{
+	margin-top: 80px;
+}
+
+
+
+
+
+
+

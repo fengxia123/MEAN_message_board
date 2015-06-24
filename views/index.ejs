@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/script.js"></script>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<title></title>
+</head>
+<body>
+	<div class="wrapper">
+	<% if(validationErrors) {%>
+		<div class="errors">
+			<%= validationErrors %>
+		</div>
+	<% } %>
+		</div>
+		<h2 class="page-heading">The Dojo Message Board</h2>
+		<div class="post-form-container">
+			<fieldset>
+				<legend>Enter Post</legend>
+				<form action="/post" method="post">
+					<div class="form-group">
+						<label for="">Name:</label>
+						<input name="name" type="text">
+					</div>
+					<div class="form-group">
+						<label for="">Message:</label>
+						<textarea name="message" id="" cols="90" rows="10"></textarea>
+					</div>
+					<a href=""><button>Post Message</button></a>
+				</form>
+			</fieldset>
+			<div class="post-container">
+			<% for(var i=0; i<posts.length; i++){ %>
+				<div class="post-comment-container">
+					<h2><%= posts[i].name %><span><%= posts[i].date %></span></h2>
+					<h3>said:</h3>
+					<hr>
+					<p><%= posts[i].message %></p>
+					<div class="comment-container">
+				<% 	if(posts[i].comments){%>
+					<% 	for(var n = 0; n<posts[i].comments.length; n++){ %>
+						<div class="comment-message-container">
+							<h4><%= posts[i].comments[n].name %>
+								<span><%= posts[i].comments[n].date %></span>
+							</h4>
+							<h5>commented:</h5>
+							<hr>
+							<p class="comment"><%= posts[i].comments[n].text %></p>
+						</div>
+					 <% } %>	
+				<%	} %>
+						<fieldset class="comment-form">
+							<legend>Add Comment</legend>
+							<form action="/post/comment" method="post">
+								<input name="id" value="<%= posts[i]._id %>" type="hidden">
+								<div class="form-group">
+									<label for="">Name:</label>
+									<input name="name" type="text">
+								</div>
+								<div class="form-group">
+									<label for="">Comment:</label>
+									<textarea name="text" id="" cols="90" rows="5"></textarea>
+								</div>
+								<button>Add Comment</button>
+							</form>
+						</fieldset>
+					</div>
+				</div>
+			<% } %>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>
